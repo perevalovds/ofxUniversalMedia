@@ -65,6 +65,11 @@ It supports MP4.
 
 It requires Windows and **ofxWMFVideoPlayer** addon.
 
+**NOTE**: Player's constructor must work after oF app is started, because player requires initialized OpenGL to work.
+So, don't declare player object "ofxUniversalMediaVideoWMF video;" as a global variable.
+	Instead, declare it as a member of ofApp class (or it's member), 
+	or define it as a pointer and use "video = new ofxWMFVideoPlayer()".
+
 ## ofxUniversalMediaVideoHAP class
 
 **ofxUniversalMediaVideoHAP** class uses ofxHapPlayer; it's super fast because uses HAP codec, intended for GPU efficience video playing.

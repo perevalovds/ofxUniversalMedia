@@ -46,3 +46,15 @@ bool ofxUniversalMediaImage::finished() {
 }
 
 //--------------------------------------------------------------
+bool ofxUniversalMediaImage::load_image_sequence(string folder_name, float frame_rate, int decode_method) {
+	//decode_method = Decode_None, Decode_To_CPU, Decode_To_GPU
+
+	return true;
+}
+
+//--------------------------------------------------------------
+bool ofxUniversalMediaImage::set_manual_mode(bool manual) {
+	return true;
+}
+
+//--------------------------------------------------------------

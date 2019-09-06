@@ -14,8 +14,8 @@ class ofApp : public ofBaseApp{
 		//Instead, declare it as a member of ofApp class (or it's member), 
 		//or define it as a pointer and use "video = new ofxWMFVideoPlayer()".
 
-		ofxUniversalMedia *video1 = 0;	//Will be DirectShow (in Windows)
-		ofxUniversalMedia *video2 = 0;  //Will be WMF (Windows only)
+		static const int n = 3;
+		ofxUniversalMedia *video[n];	//Will be DirectShow (in Windows)
 
 		void setup();
 		void update();

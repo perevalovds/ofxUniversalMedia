@@ -33,6 +33,7 @@ Below is some recommendations about choosing the appropriate class method for yo
 It's universal. You can store decoded images in GPU, but it consumes much of memory.
 You can store encoded images in CPU, but it not super-fast decoded.
 Note, **ofxUniversalMediaImageTurgoJpeg** is faster when working with JPEGs, so use it if you work with JPEGs.
+But JPEG doesn't support alpha-channel, so for sequences with alpha-channel you need to use **ofxUniversalMediaImage**.
 
 It's appropriate for using as video player, but you must to encode your videos to image sequences, without audio.
 
@@ -42,6 +43,7 @@ It's appropriate for using as video player, but you must to encode your videos t
 **ofxUniversalMediaImageTurgoJpeg** class utilizes ofxTurboJpeg addon for reading and decoding JPEG images;
 it's based on ofxTurboJpeg and decodes JPEGS very fast compared with ofxUniversalMediaImage,
 so if you are using JPEG image sequences, in any case it's better choise that **ofxUniversalMediaImage**.
+But JPEG doesn't support alpha-channel, so for sequences with alpha-channel you need to use **ofxUniversalMediaImage**.
 
 It's appropriate for using as video player, but you must to encode your videos to JPEG image sequences, without audio.
 

@@ -32,7 +32,7 @@ Below is some recommendations about choosing the appropriate class method for yo
 **ofxUniversalMediaImage** class works with images using ofTexture class; it's based on FreeImage for reading and decoding images on CPU.
 It's universal. You can store decoded images in GPU, but it consumes much of memory.
 You can store encoded images in CPU, but it not super-fast decoded.
-Note, **ofxUniversalMediaImageTurgoJpeg** is faster when working with JPEGs, so use it if you work with JPEGS.
+Note, **ofxUniversalMediaImageTurgoJpeg** is faster when working with JPEGs, so use it if you work with JPEGs.
 
 It's appropriate for using as video player, but you must to encode your videos to image sequences, without audio.
 

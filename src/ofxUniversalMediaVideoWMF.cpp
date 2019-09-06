@@ -23,7 +23,7 @@ void ofxUniversalMediaVideoWMF::close() {
 }
 
 //--------------------------------------------------------------
-void ofxUniversalMediaVideoWMF::update(float dt) {
+void ofxUniversalMediaVideoWMF::update() {
 	if (loaded && playing_) {
 		video.update();
 	}

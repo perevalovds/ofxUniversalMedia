@@ -16,7 +16,7 @@ struct ofxUniversalMediaVideoWMF: public ofxUniversalMedia {
 
 	virtual void close();
 
-	virtual void update(float dt);
+	virtual void update();
 	virtual void draw(float x, float y, float w, float h);
 
 	virtual void play(bool looped);

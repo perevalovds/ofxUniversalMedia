@@ -19,7 +19,7 @@ void ofxUniversalMediaVideo::close() {
 }
 
 //--------------------------------------------------------------
-void ofxUniversalMediaVideo::update(float dt) {
+void ofxUniversalMediaVideo::update() {
 	if (loaded && playing_) {
 		video.update();
 	}

@@ -11,7 +11,7 @@ struct ofxUniversalMediaImage: public ofxUniversalMedia {
 	virtual bool load(string file_name);
 	virtual void close();
 
-	virtual void update(float dt);
+	virtual void update();
 	virtual void draw(float x, float y, float w, float h);
 
 	virtual void play(bool looped);

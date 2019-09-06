@@ -59,8 +59,11 @@ It requires **K-Lite** codecs pack for playing MPG4 videos.
 
 **ofxUniversalMediaVideoWMF** class uses ofWMFVideoPlayer addon; it's based on Windows Media Foundation API,
 so it gives fast and smooth playing because it's modern Windows method for playing videos using GPU, when available. 
-It's oF impementation is not super perfect, and as a result, it's not very well syncing and not good for looping videos. 
+
+It's current oF impementation is not super perfect, and as a result, it's not very well syncing and not good for looping videos
+(seems it skips the last frame and sometimes freeze and drop frames). 
 Also, currently it streams videos from disk, so may work slow when playing many videos simultaneously.
+But, it works on GPU and fits well for situations when syncing is not so important.
 It supports MP4.
 
 It requires Windows and **ofxWMFVideoPlayer** addon.

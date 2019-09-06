@@ -19,7 +19,7 @@ void ofxUniversalMediaImage::close() {
 }
 
 //--------------------------------------------------------------
-void ofxUniversalMediaImage::update(float dt) {
+void ofxUniversalMediaImage::update() {
 
 }
 

@@ -16,9 +16,9 @@ If you don't need support particular playing method, just not include it to the 
 Addon allows you to work with video using several methods.
 
 You may declare object of **ofxUniversalMedia** class and instanciate it with one of the following classes:
-* **ofxUniversalMediaImageStandard** - images decoding with FreeImage,
+* **ofxUniversalMediaImage** - images decoding with oF standard method using FreeImage,
 * **ofxUniversalMediaImageTurgoJpeg** - JPEG images decoding with TurboJpeg,
-* **ofxUniversalMediaVideoStandard** - video player using DirectShow in Windows and others - related to oF standard ofVideoPlayer class,
+* **ofxUniversalMediaVideo** - video player using DirectShow in Windows and others - related to oF standard ofVideoPlayer class,
 * **ofxUniversalMediaVideoWMF** - video player using WFM (Windows),
 * **ofxUniversalMediaVideoHAP** - video player using HAP codec.
 
@@ -27,24 +27,29 @@ Also, you can use this classes directly.
 
 Below is some recommendations about choosing the appropriate class method for your needs.
 
-## ofxUniversalMediaImageStandard class
+## ofxUniversalMediaImage class
 
-**ofxUniversalMediaImageStandard** class works with images using ofTexture class; it's based on FreeImage for reading and decoding images on CPU.
-It's universal, but not super-fast.
-For using for you must to encode your videos to PNG or JPEG sequences, without audio.
+**ofxUniversalMediaImage** class works with images using ofTexture class; it's based on FreeImage for reading and decoding images on CPU.
+It's universal. You can store decoded images in GPU, but it consumes much of memory.
+You can store encoded images in CPU, but it not super-fast decoded.
+Note, **ofxUniversalMediaImageTurgoJpeg** is faster when working with JPEGs, so use it if you work with JPEGS.
+
+It's appropriate for using as video player, but you must to encode your videos to image sequences, without audio.
 
 
 ## ofxUniversalMediaImageTurgoJpeg class
 
 **ofxUniversalMediaImageTurgoJpeg** class utilizes ofxTurboJpeg addon for reading and decoding JPEG images;
-it's based on ofxTurboJpeg and work with JPEGs very fast on CPU.
-For using for you must to encode your videos to JPEG sequences, without audio.
+it's based on ofxTurboJpeg and decodes JPEGS very fast compared with ofxUniversalMediaImage,
+so if you are using JPEG image sequences, in any case it's better choise that **ofxUniversalMediaImage**.
+
+It's appropriate for using as video player, but you must to encode your videos to JPEG image sequences, without audio.
 
 It requires **ofxTurboJpeg** addon.
 
-## ofxUniversalMediaVideoStandard class
+## ofxUniversalMediaVideo class
 
-**ofxUniversalMediaVideoStandard** class utilizes standard **ofVideoPlayer** class.
+**ofxUniversalMediaVideo** class utilizes standard **ofVideoPlayer** class.
 In Windows, it uses DirectShow method and loads all video to CPU, so loops work smoothly.
 Also, it CPU-intensive. It supports MPG4 (after installing K-lite codecs pack).
 

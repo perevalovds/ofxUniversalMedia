@@ -20,7 +20,7 @@ You may declare object of **ofxUniversalMedia** class and instanciate it with on
 * **ofxUniversalMediaImageTurgoJpeg** - image and image sequence supporting JPEG images decoding with TurboJpeg,
 * **ofxUniversalMediaVideo** - video player using DirectShow in Windows and others - related to oF standard ofVideoPlayer class,
 * **ofxUniversalMediaVideoWMF** - video player using WFM (Windows),
-* **ofxUniversalMediaVideoHAP** - video player using HAP codec.
+* **ofxUniversalMediaVideoHap** - video player using HAP/HAPQ codec.
 
 Also, you can use this classes directly.
 
@@ -47,7 +47,7 @@ But JPEG doesn't support alpha-channel, so for sequences with alpha-channel you 
 
 It's appropriate for using as video player, but you must to encode your videos to JPEG image sequences, without audio.
 
-Requirements: **ofxTurboJpeg** addon.
+Requirements: **ofxTurboJpeg** addon (I tested it on my fork of the addon).
 
 ## ofxUniversalMediaVideo class
 
@@ -68,7 +68,7 @@ Also, currently it streams videos from disk, so may work slow when playing many 
 But, it works on GPU and fits well for situations when syncing is not so important.
 It supports MP4.
 
-Requirements: Windows OS and **ofxWMFVideoPlayer** addon.
+Requirements: Windows OS and **ofxWMFVideoPlayer** addon (I tested it on my fork of the addon).
 
 **NOTE**: Player's constructor must work after oF app is started, because player requires initialized OpenGL to work.
 So, don't declare player object "ofxUniversalMediaVideoWMF video;" as a global variable.
@@ -77,7 +77,19 @@ So, don't declare player object "ofxUniversalMediaVideoWMF video;" as a global v
 
 ## ofxUniversalMediaVideoHAP class
 
-**ofxUniversalMediaVideoHAP** class uses ofxHapPlayer; it's super fast because uses HAP codec, intended for GPU efficience video playing.
-For using it you must to encode your videos to HAP format.
+**ofxUniversalMediaVideoHap** class uses ofxHapPlayer; it's allows to work with very big image sizes 
+and is super fast because uses HAP (currently HAPQ - see note) codec, 
+intended for GPU efficience video playing.
+For using it you must to encode your videos to HAP (currently HAPQ) format.
 
-Requirements: **ofxHapPlayer** addon for HAP support.
+HAP files are huge, so it's proposed to use them with SSD drives.
+
+Requirements: **ofxHapPlayer** addon for HAP support (I tested it on my fork of the addon).
+
+For encoding your videos to HAP/HAPQ, you can get HAP codec for Windows and Mac OS at "hap-qt-codec" repo or in my fork of **ofxHapPlayer** addon.
+
+**NOTE**: currently ofxUniversalMediaVideoHAP supports HAPQ codec (not HAP), because it gets better image quality.
+Remember, that drawing HAPQ requires passing via ofxHapPlayer's shader, so
+in the class it's enabled at each draw() automatically by default.
+Hence, if you need to pass it via your own shader, at the first draw to FBO
+

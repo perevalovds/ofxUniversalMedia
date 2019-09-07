@@ -3,6 +3,7 @@
 #include "ofxUniversalMediaVideoWMF.h"
 #include "ofxUniversalMediaImage.h"
 #include "ofxUniversalMediaImageTurboJpeg.h"
+#include "ofxUniversalMediaVideoHap.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -15,7 +16,9 @@ void ofApp::setup(){
 	video[1] = new ofxUniversalMediaVideoWMF();		//WMF (only for Windows)
 	//video[2] = new ofxUniversalMediaImage();		//Image sequence decoded using standard oF's ofTexture
 	video[2] = new ofxUniversalMediaImageTurboJpeg();		//Image sequence decoded using TurboJpeg
-	
+
+	video[3] = new ofxUniversalMediaVideoHap();		//HAPQ player
+
 
 	cout << "Load ofVideoPlayer video..." << endl;
 	bool res = video[0]->load("video-ofxShadertoy.mp4");
@@ -28,7 +31,12 @@ void ofApp::setup(){
 	cout << "Loading image sequence..." << endl;
 	res = video[2]->load_image_sequence("sequence_25_fps", 25, ofxUniversalMediaImage::Decode_None);
 	if (!res) cout << "Error!" << endl;
+
+	cout << "Loading HAPQ video..." << endl;
+	res = video[3]->load("video_HAPQ.mov");		//NOTE: HAPQ uses shader for draw, so if you need to pass it via your own shader, at the first draw to FBO
+	if (!res) cout << "Error!" << endl;
 	cout << "... finished" << endl;
+
 
 	bool looped = true;
 	for (int i = 0; i < n; i++) {
@@ -49,7 +57,7 @@ void ofApp::draw(){
 	ofSetColor(255);
 	float w = ofGetWidth();
 	float h = ofGetHeight();
-	for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < n; i++) {
 		int x = w / 2 * (i % 2);
 		int y = h / 2 * (i / 2);
 		video[i]->draw(x, y, w / 2, h / 2);
@@ -58,6 +66,7 @@ void ofApp::draw(){
 	ofDrawBitmapStringHighlight("DirectShow player", 20, 20);
 	ofDrawBitmapStringHighlight("WMF player", w/2 + 20, 20);
 	ofDrawBitmapStringHighlight("FreeImage sequence", 20, h/2 + 20);
+	ofDrawBitmapStringHighlight("HAPQ video player", 20 + w / 2, h / 2 + 20);
 }
 
 //--------------------------------------------------------------

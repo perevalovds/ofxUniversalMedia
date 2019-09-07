@@ -1,3 +1,4 @@
+ofxHapPlayer
 ofxTurboJpeg
 ofxUniversalMedia
 ofxWMFVideoPlayer

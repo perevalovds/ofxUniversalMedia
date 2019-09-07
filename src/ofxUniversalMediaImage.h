@@ -9,6 +9,11 @@ You can store encoded images in CPU, but it not super - fast decoded.
 Note, **ofxUniversalMediaImageTurgoJpeg** is faster when working with JPEGs, so use it if you work with JPEGs.
 But JPEG doesn't support alpha-channel, so for sequences with alpha-channel you need to use **ofxUniversalMediaImage**.
 
+It loads the whole sequence to memory, depending on three options:
+* non-decoded file (most memory optimized),
+* decoded to CPU images - ofPixels (CPU memory consuming, but not reuired decoding),
+* decoded to GPU images - ofTexture (GPU memory consuming, but fastest).
+
 It's appropriate for using as video player, but you must to encode your videos to image sequences, without audio.
 */
 

@@ -10,6 +10,11 @@ But JPEG doesn't support alpha-channel, so for sequences with alpha-channel you 
 
 It's appropriate for using as video player, but you must to encode your videos to JPEG image sequences, without audio.
 
+It loads the whole sequence to memory, depending on three options:
+* non-decoded file (most memory optimized),
+* decoded to CPU images - ofPixels (CPU memory consuming, but not reuired decoding),
+* decoded to GPU images - ofTexture (GPU memory consuming, but fastest).
+
 Requirements: ofxTurboJpeg addon.
 
 */

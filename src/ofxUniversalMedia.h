@@ -33,7 +33,7 @@ struct ofxUniversalMedia {
 	static const int Decode_To_CPU = 1;	//Decode to CPU images
 	static const int Decode_To_GPU = 2;	//Decode to GPU textures
 
-	virtual bool load_image_sequence(string folder_name, float frame_rate, int decode_method) { return false; }
+	virtual bool load_image_sequence(string folder_name, double frame_rate, int decode_method) { return false; }
 	//manual mode moves to the next frame on each update call
 	//it returns false if not implemented
 

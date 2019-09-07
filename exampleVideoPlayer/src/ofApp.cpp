@@ -14,10 +14,19 @@ void ofApp::setup(){
 	video[1] = new ofxUniversalMediaVideoWMF();		//WMF (only for Windows)
 	video[2] = new ofxUniversalMediaImage();		//Image sequence using standard oF's ofTexture
 
-	video[0]->load("video-ofxShadertoy.mp4");
-	video[1]->load("video-ofxShadertoy.mp4");
-	video[2]->load_image_sequence("sequence_25_fps", 25, ofxUniversalMediaImage::Decode_None);
-	
+	cout << "Load ofVideoPlayer video..." << endl;
+	bool res = video[0]->load("video-ofxShadertoy.mp4");
+	if (!res) cout << "Error!" << endl;
+
+	cout << "Load WMF video..." << endl;
+	res = video[1]->load("video-ofxShadertoy.mp4");
+	if (!res) cout << "Error!" << endl;
+
+	cout << "Loading image sequence..." << endl;
+	res = video[2]->load_image_sequence("sequence_25_fps", 25, ofxUniversalMediaImage::Decode_None);
+	if (!res) cout << "Error!" << endl;
+	cout << "... finished" << endl;
+
 	bool looped = true;
 	for (int i = 0; i < n; i++) {
 		video[i]->play(looped);
@@ -45,7 +54,7 @@ void ofApp::draw(){
 
 	ofDrawBitmapStringHighlight("DirectShow player", 20, 20);
 	ofDrawBitmapStringHighlight("WMF player", w/2 + 20, 20);
-	ofDrawBitmapStringHighlight("FreeImage sequence", w / 2 + 20, h/2 + 20);
+	ofDrawBitmapStringHighlight("FreeImage sequence", 20, h/2 + 20);
 }
 
 //--------------------------------------------------------------

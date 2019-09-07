@@ -1,13 +1,21 @@
 #pragma once
 
-//Медиа - видео, DirectShow
-//По сравнению с WMF, использует больше CPU, чем GPU, но работает "на любых" видеокартах
+/*
+ofxUniversalMediaVideo - video player using DirectShow in Windows and others 
+- related to oF standard ofVideoPlayer class.
+
+ofxUniversalMediaVideo class utilizes standard ofVideoPlayer class.
+In Windows, it uses DirectShow method and loads all video to CPU, so loops work smoothly.
+Also, it CPU-intensive. It supports MPG4 (after installing K-lite codecs pack).
+
+Requirements: K-Lite codecs pack for playing MPG4 videos.
+
+*/
 
 #include "ofMain.h"
 #include "ofxUniversalMedia.h"
 
 
-//Абстрактный класс
 struct ofxUniversalMediaVideo: public ofxUniversalMedia {
 	virtual bool load(string file_name);
 	virtual void close();

@@ -1,2 +1,3 @@
+ofxTurboJpeg
 ofxUniversalMedia
 ofxWMFVideoPlayer

@@ -16,8 +16,8 @@ If you don't need support particular playing method, just not include it to the 
 Addon allows you to work with video using several methods.
 
 You may declare object of **ofxUniversalMedia** class and instanciate it with one of the following classes:
-* **ofxUniversalMediaImage** - images decoding with oF standard method using FreeImage,
-* **ofxUniversalMediaImageTurgoJpeg** - JPEG images decoding with TurboJpeg,
+* **ofxUniversalMediaImage** - image and image sequence supporting any image formats, decoding with oF standard method using FreeImage,
+* **ofxUniversalMediaImageTurgoJpeg** - image and image sequence supporting JPEG images decoding with TurboJpeg,
 * **ofxUniversalMediaVideo** - video player using DirectShow in Windows and others - related to oF standard ofVideoPlayer class,
 * **ofxUniversalMediaVideoWMF** - video player using WFM (Windows),
 * **ofxUniversalMediaVideoHAP** - video player using HAP codec.
@@ -47,7 +47,7 @@ But JPEG doesn't support alpha-channel, so for sequences with alpha-channel you 
 
 It's appropriate for using as video player, but you must to encode your videos to JPEG image sequences, without audio.
 
-It requires **ofxTurboJpeg** addon.
+Requirements: **ofxTurboJpeg** addon.
 
 ## ofxUniversalMediaVideo class
 
@@ -55,9 +55,9 @@ It requires **ofxTurboJpeg** addon.
 In Windows, it uses DirectShow method and loads all video to CPU, so loops work smoothly.
 Also, it CPU-intensive. It supports MPG4 (after installing K-lite codecs pack).
 
-## ofxUniversalMediaVideoWMF class
+Requirements: **K-Lite** codecs pack for playing MPG4 videos.
 
-It requires **K-Lite** codecs pack for playing MPG4 videos.
+## ofxUniversalMediaVideoWMF class
 
 **ofxUniversalMediaVideoWMF** class uses ofWMFVideoPlayer addon; it's based on Windows Media Foundation API,
 so it gives fast and smooth playing because it's modern Windows method for playing videos using GPU, when available. 
@@ -68,7 +68,7 @@ Also, currently it streams videos from disk, so may work slow when playing many 
 But, it works on GPU and fits well for situations when syncing is not so important.
 It supports MP4.
 
-It requires Windows and **ofxWMFVideoPlayer** addon.
+Requirements: Windows OS and **ofxWMFVideoPlayer** addon.
 
 **NOTE**: Player's constructor must work after oF app is started, because player requires initialized OpenGL to work.
 So, don't declare player object "ofxUniversalMediaVideoWMF video;" as a global variable.
@@ -80,4 +80,4 @@ So, don't declare player object "ofxUniversalMediaVideoWMF video;" as a global v
 **ofxUniversalMediaVideoHAP** class uses ofxHapPlayer; it's super fast because uses HAP codec, intended for GPU efficience video playing.
 For using it you must to encode your videos to HAP format.
 
-It requires **ofxHapPlayer** addon for HAP support.
+Requirements: **ofxHapPlayer** addon for HAP support.

@@ -58,10 +58,14 @@ bool ofxUniversalMediaImage::load_frame(int i) {
 			frame_ = i;		//we set even errorneous frame - frame_ >= n is required to understand play end
 			if (i >= 0 && i < n_) {
 				if (decode_ == Decode_None) {
-					return ofLoadImage(texture, buff_[frame_]);
+					//return ofLoadImage(texture, buff_[frame_]);
+					return load_texture(texture, buff_[frame_]);
 				}
 				if (decode_ == Decode_To_CPU) {
 					texture.loadData(pix_[frame_]);
+					//NOTE: can be allocated from previous... 
+					//but we don't call texture.clear(), because want for faster works
+					return texture.isAllocated();
 				}
 				if (decode_ == Decode_To_GPU) {
 					//nothing to do, we will draw read texture tex_[]
@@ -137,6 +141,21 @@ bool ofxUniversalMediaImage::load_image_sequence(string folder_name, double fram
 	return load_sequence(files, frame_rate, decode_method);
 }
 
+
+//--------------------------------------------------------------
+//All decoding is here, it's way to implement TurboJpeg decoding by inheritance
+bool ofxUniversalMediaImage::load_texture(ofTexture &texture, const string &file_name) {
+	return ofLoadImage(texture, file_name);
+}
+
+bool ofxUniversalMediaImage::load_texture(ofTexture &texture, const ofBuffer &buffer) {
+	return ofLoadImage(texture, buffer);
+}
+
+bool ofxUniversalMediaImage::load_pixels(ofPixels &pixels, const string &file_name) {
+	return ofLoadImage(pixels, file_name);
+}
+
 //--------------------------------------------------------------
 bool ofxUniversalMediaImage::load_sequence(const vector<string> &files, double frame_rate, int decode_method) {
 	//decode_method = Decode_None, Decode_To_CPU, Decode_To_GPU
@@ -160,13 +179,13 @@ bool ofxUniversalMediaImage::load_sequence(const vector<string> &files, double f
 	if (decode_ == Decode_To_CPU) {
 		pix_.resize(n_);
 		for (int i = 0; i < n_; i++) {
-			ofLoadImage(pix_[i], files[i]);	//TODO check success
+			load_pixels(pix_[i], files[i]);	//TODO check success
 		}
 	}
 	if (decode_ == Decode_To_GPU) {
 		tex_.resize(n_);
 		for (int i = 0; i < n_; i++) {
-			ofLoadImage(tex_[i], files[i]);	//TODO check success
+			load_texture(tex_[i], files[i]);	//TODO check success
 		}
 	}
 

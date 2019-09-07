@@ -2,6 +2,7 @@
 #include "ofxUniversalMediaVideo.h"
 #include "ofxUniversalMediaVideoWMF.h"
 #include "ofxUniversalMediaImage.h"
+#include "ofxUniversalMediaImageTurboJpeg.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -12,7 +13,9 @@ void ofApp::setup(){
 	
 	video[0] = new ofxUniversalMediaVideo();		//DirectShow using standard oF's ofVideoPlayer (in Windows)
 	video[1] = new ofxUniversalMediaVideoWMF();		//WMF (only for Windows)
-	video[2] = new ofxUniversalMediaImage();		//Image sequence using standard oF's ofTexture
+	//video[2] = new ofxUniversalMediaImage();		//Image sequence decoded using standard oF's ofTexture
+	video[2] = new ofxUniversalMediaImageTurboJpeg();		//Image sequence decoded using TurboJpeg
+	
 
 	cout << "Load ofVideoPlayer video..." << endl;
 	bool res = video[0]->load("video-ofxShadertoy.mp4");

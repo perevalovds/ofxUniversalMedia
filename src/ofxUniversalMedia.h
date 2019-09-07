@@ -1,6 +1,6 @@
 #pragma once
 
-//Абстрактный медиа - изображение или видео
+//Abstract media class
 
 #include "ofMain.h"
 
@@ -9,7 +9,6 @@ static const int ofxUniversalMedia_Type_Image = 1;
 static const int ofxUniversalMedia_Type_Video = 2;
 
 
-//Абстрактный класс
 struct ofxUniversalMedia {
 	ofxUniversalMedia() {}
 	virtual bool load(string file_name) { return false; }

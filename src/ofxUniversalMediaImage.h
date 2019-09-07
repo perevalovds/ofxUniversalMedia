@@ -1,12 +1,23 @@
 #pragma once
 
-//Медиа - изображение 
+/*ofxUniversalMediaImage - image and image sequence supporting any image formats, 
+decoding with oF standard method using FreeImage.
+
+ofxUniversalMediaImage class works with images using ofTexture class; it's based on FreeImage for reading and decoding images on CPU.
+It's universal. You can store decoded images in GPU, but it consumes much of memory.
+You can store encoded images in CPU, but it not super - fast decoded.
+Note, **ofxUniversalMediaImageTurgoJpeg** is faster when working with JPEGs, so use it if you work with JPEGs.
+But JPEG doesn't support alpha-channel, so for sequences with alpha-channel you need to use **ofxUniversalMediaImage**.
+
+It's appropriate for using as video player, but you must to encode your videos to image sequences, without audio.
+*/
+
 
 #include "ofMain.h"
 #include "ofxUniversalMedia.h"
 
 
-//Абстрактный класс
+
 struct ofxUniversalMediaImage: public ofxUniversalMedia {
 	virtual bool load(string file_name);	//load one image
 
@@ -53,5 +64,10 @@ protected:
 	int frame_ = -1;			//play frame number
 
 	bool load_frame(int i);
+
+	//All decoding is here, it's way to implement TurboJpeg decoding by inheritance
+	virtual bool load_texture(ofTexture &texture, const string &file_name);
+	virtual bool load_texture(ofTexture &texture, const ofBuffer &buffer);
+	virtual bool load_pixels(ofPixels &pixels, const string &file_name);
 };
 

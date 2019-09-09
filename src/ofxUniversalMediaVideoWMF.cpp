@@ -37,6 +37,13 @@ void ofxUniversalMediaVideoWMF::draw(float x, float y, float w, float h) {
 }
 
 //--------------------------------------------------------------
+void ofxUniversalMediaVideoWMF::set_volume(float v) {
+	if (loaded) {
+		video.setVolume(v);
+	}
+}
+
+//--------------------------------------------------------------
 void ofxUniversalMediaVideoWMF::play(bool looped) {
 	if (loaded) {
 		//Состояние петли меняем в любом случае, даже если уже воспроизводится

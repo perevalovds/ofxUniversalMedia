@@ -17,6 +17,7 @@ struct ofxUniversalMedia {
 
 	virtual void update() {}
 	virtual void draw(float x, float y, float w, float h) {}
+	virtual void set_volume(float v) {}
 
 	virtual void play(bool looped) {}
 	virtual void stop() {}

@@ -41,6 +41,13 @@ void ofxUniversalMediaVideoHap::draw(float x, float y, float w, float h) {
 }
 
 //--------------------------------------------------------------
+void ofxUniversalMediaVideoHap::set_volume(float v) {
+	if (loaded) {
+		video.setVolume(v);
+	}
+}
+
+//--------------------------------------------------------------
 void ofxUniversalMediaVideoHap::play(bool looped) {
 	if (loaded) {
 		//«апускаем, если только сейчас не играет

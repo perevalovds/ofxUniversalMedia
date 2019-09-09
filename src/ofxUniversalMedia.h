@@ -24,7 +24,12 @@ struct ofxUniversalMedia {
 	virtual bool finished() { return true; }
 
 	bool is_loaded() { return loaded; }
-
+	
+	//Getters //NOTE: currently not implemented
+	virtual ofTexture *get_texture() { return NULL; }
+	virtual int width() { return 0; }
+	virtual int height() { return 0; }
+	
 	//------------------------------------------------------------
 	//Related to image sequences
 

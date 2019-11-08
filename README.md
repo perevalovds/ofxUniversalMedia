@@ -1,6 +1,6 @@
 # ofxUniversalMedia
 
-Addon for playing video and images using WMF (Windows), HAP and TurboJPEG.
+Addon for playing video, images and sounds using WMF (Windows), HAP and TurboJPEG.
 Also it supports DShow playing (in Windows using class ofPlayer).
 
 Author: Denis Perevalov
@@ -20,7 +20,8 @@ You may declare object of **ofxUniversalMedia** class and instanciate it with on
 * **ofxUniversalMediaImageTurgoJpeg** - image and image sequence supporting JPEG images decoding with TurboJpeg,
 * **ofxUniversalMediaVideo** - video player using DirectShow in Windows and others - related to oF standard ofVideoPlayer class,
 * **ofxUniversalMediaVideoWMF** - video player using WFM (Windows),
-* **ofxUniversalMediaVideoHap** - video player using HAP/HAPQ codec.
+* **ofxUniversalMediaVideoHap** - video player using HAP/HAPQ codec,
+* **ofxUniversalMediaSound** - sound player using standard ofSoundPlayer class (you need to call ofSoundUpdate() in ofApp::update()).
 
 Also, you can use this classes directly.
 

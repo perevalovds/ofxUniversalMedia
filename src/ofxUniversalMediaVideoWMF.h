@@ -24,6 +24,8 @@ Requirements: Windows OS and ofxWMFVideoPlayer addon.
 
 
 struct ofxUniversalMediaVideoWMF: public ofxUniversalMedia {
+	virtual bool has_image() { return true; }
+	virtual bool has_sound() { return true; }
 	
 	virtual bool load(string file_name);
 
@@ -37,6 +39,9 @@ struct ofxUniversalMediaVideoWMF: public ofxUniversalMedia {
 	virtual void play(bool looped);
 	virtual void stop();
 	virtual bool finished();
+
+	virtual int width() { return video.getWidth(); }
+	virtual int height() { return video.getHeight(); }
 
 protected:
 	ofxWMFVideoPlayer video;	

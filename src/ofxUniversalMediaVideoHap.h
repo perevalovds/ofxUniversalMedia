@@ -28,6 +28,9 @@ Hence, if you need to pass it via your own shader, at the first draw to FBO
 
 
 struct ofxUniversalMediaVideoHap: public ofxUniversalMedia {
+	virtual bool has_image() { return true; }
+	virtual bool has_sound() { return true; }
+
 	virtual bool load(string file_name);
 	virtual void close();
 
@@ -38,6 +41,9 @@ struct ofxUniversalMediaVideoHap: public ofxUniversalMedia {
 	virtual void play(bool looped);
 	virtual void stop();
 	virtual bool finished();
+
+	virtual int width() { return video.getWidth(); }
+	virtual int height() { return video.getHeight(); }
 
 protected:
 	ofxHapPlayer video;

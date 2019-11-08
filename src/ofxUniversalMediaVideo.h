@@ -17,6 +17,9 @@ Requirements: K-Lite codecs pack for playing MPG4 videos.
 
 
 struct ofxUniversalMediaVideo: public ofxUniversalMedia {
+	virtual bool has_image() { return true; }
+	virtual bool has_sound() { return true; }
+
 	virtual bool load(string file_name);
 	virtual void close();
 
@@ -27,6 +30,9 @@ struct ofxUniversalMediaVideo: public ofxUniversalMedia {
 	virtual void play(bool looped);
 	virtual void stop();
 	virtual bool finished();
+
+	virtual int width() { return video.getWidth(); }
+	virtual int height() { return video.getHeight(); }
 
 protected:
 	ofVideoPlayer video;

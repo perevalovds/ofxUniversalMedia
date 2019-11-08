@@ -4,20 +4,20 @@
 
 #include "ofMain.h"
 
-static const int ofxUniversalMedia_Type_Empty = 0;
-static const int ofxUniversalMedia_Type_Image = 1;
-static const int ofxUniversalMedia_Type_Video = 2;
-
 
 struct ofxUniversalMedia {
 	ofxUniversalMedia() {}
-	virtual bool load(string file_name) { return false; }
 
+	//Properties of the media
+	virtual bool has_image() { return false; }
+	virtual bool has_sound() { return false; }
+
+	//Loading
+	virtual bool load(string file_name) { return false; }
 	virtual void close() {}
 
 	virtual void update() {}
 	virtual void draw(float x, float y, float w, float h) {}
-	virtual void set_volume(float v) {}
 
 	virtual void play(bool looped) {}
 	virtual void stop() {}
@@ -26,10 +26,15 @@ struct ofxUniversalMedia {
 	bool is_loaded() { return loaded; }
 	
 	//Getters //NOTE: currently not implemented
+	//Related to image
 	virtual ofTexture *get_texture() { return NULL; }
 	virtual int width() { return 0; }
 	virtual int height() { return 0; }
-	
+
+	//Related to sound
+	virtual void set_volume(float v) {}
+
+
 	//------------------------------------------------------------
 	//Related to image sequences
 
@@ -47,8 +52,6 @@ struct ofxUniversalMedia {
 
 
 protected:
-	//Тип контента
-	int type = ofxUniversalMedia_Type_Empty;
 
 	int loaded = 0;
 };

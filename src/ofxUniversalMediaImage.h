@@ -24,6 +24,9 @@ It's appropriate for using as video player, but you must to encode your videos t
 
 
 struct ofxUniversalMediaImage: public ofxUniversalMedia {
+	virtual bool has_image() { return true; }
+	virtual bool has_sound() { return false; }
+
 	virtual bool load(string file_name);	//load one image
 
 	virtual void close();
@@ -35,6 +38,8 @@ struct ofxUniversalMediaImage: public ofxUniversalMedia {
 	virtual void stop();
 	virtual bool finished();
 
+	virtual int width() { return texture.getWidth(); }
+	virtual int height() { return texture.getHeight(); }
 	//------------------------------------------------------------
 	//Related to image sequences
 	virtual bool load_image_sequence(string folder_name, double frame_rate, int decode_method);

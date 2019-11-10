@@ -47,6 +47,10 @@ struct ofxUniversalMedia {
 	//manual mode moves to the next frame on each update call
 	//it returns false if not implemented
 
+	//set frame rate (currently implemented for image sequances only)
+	virtual bool set_frame_rate(float fr_rate) { return false; }
+
+
 	//Most useful for image sequences to have full control on it
 	virtual bool set_manual_mode(bool manual) { return false; }
 

@@ -203,3 +203,10 @@ bool ofxUniversalMediaImage::set_manual_mode(bool manual) {
 }
 
 //--------------------------------------------------------------
+//set frame rate 
+bool ofxUniversalMediaImage::set_frame_rate(float fr_rate) {
+	frame_rate_ = fr_rate;
+	return true;
+}
+
+//--------------------------------------------------------------

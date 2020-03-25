@@ -21,6 +21,7 @@ struct ofxUniversalMediaVideo: public ofxUniversalMedia {
 	virtual bool has_sound() { return true; }
 
 	virtual bool load(string file_name);
+	virtual bool load(string file_name, bool preload);
 	virtual void close();
 
 	virtual void update();
@@ -35,9 +36,12 @@ struct ofxUniversalMediaVideo: public ofxUniversalMedia {
 	virtual int height() { return video.getHeight(); }
 
 protected:
+	bool load_internal();
 	ofVideoPlayer video;
 
 	int playing_ = 0;
 
+	bool preload_ = false;
+	string file_name_;
 };
 

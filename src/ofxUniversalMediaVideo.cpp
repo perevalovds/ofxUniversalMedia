@@ -3,7 +3,27 @@
 
 //--------------------------------------------------------------
 bool ofxUniversalMediaVideo::load(string file_name) {
-	bool res = video.load(file_name);
+	return load(file_name, true);
+}
+
+//--------------------------------------------------------------
+bool ofxUniversalMediaVideo::load(string file_name, bool preload) {
+	preload_ = preload;
+	file_name_ = file_name;
+	loaded = false;
+	if (preload_) {
+		return load_internal();
+	}
+	else {
+		return true;
+	}
+}
+
+//--------------------------------------------------------------
+bool ofxUniversalMediaVideo::load_internal() {
+	//cout << "loading  " << file_name_ << endl;
+
+	bool res = video.load(file_name_);
 	loaded = res;
 	if (!res) {
 		//MLOG("Ошибка загрузки видео " + file_name, ofColor(255, 0, 0));
@@ -15,6 +35,7 @@ bool ofxUniversalMediaVideo::load(string file_name) {
 void ofxUniversalMediaVideo::close() {
 	if (loaded) {
 		video.close();
+		loaded = 0;
 	}
 }
 
@@ -41,6 +62,10 @@ void ofxUniversalMediaVideo::set_volume(float v) {
 
 //--------------------------------------------------------------
 void ofxUniversalMediaVideo::play(bool looped) {
+	if (!preload_) {
+		load_internal();
+	}
+
 	if (loaded) {
 		//Запускаем, если только сейчас не играет
 		if (!playing_) {
@@ -60,6 +85,10 @@ void ofxUniversalMediaVideo::stop() {
 		playing_ = 0;
 		video.stop();
 		//MLOG("Stop video", ofColor(0, 0, 255));
+
+		if (!preload_) {
+			close();
+		}
 	}
 }
 

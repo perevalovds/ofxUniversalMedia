@@ -14,6 +14,8 @@ struct ofxUniversalMedia {
 
 	//Loading
 	virtual bool load(string file_name) { return false; }
+	//optional with preloading option:
+	virtual bool load(string file_name, bool preload) { return false; }
 	virtual void close() {}
 
 	virtual void update() {}
